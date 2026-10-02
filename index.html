@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فروش چیت تاسینو</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Tahoma, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #090909;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* نوشته‌های پس‌زمینه */
+    body::before {
+      content:
+        "تاسینو  ×  تاسینو  ×  تاسینو  ×  تاسینو  ×  تاسینو  ×  تاسینو  ×  تاسینو  ×  تاسینو  ×  تاسینو  ×  تاسینو";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.035;
+      font-size: 55px;
+      font-weight: bold;
+      line-height: 2;
+      transform: rotate(-15deg) scale(1.5);
+      white-space: normal;
+      word-spacing: 25px;
+      pointer-events: none;
+    }
+
+    header {
+      text-align: center;
+      padding: 45px 20px 25px;
+    }
+
+    header h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #aaa;
+      font-size: 15px;
+    }
+
+    .cards {
+      width: min(1100px, 92%);
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(22,22,22,.94);
+      border: 1px solid #303030;
+      border-radius: 20px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #666;
+    }
+
+    .card h2 {
+      margin-bottom: 15px;
+    }
+
+    .desc {
+      color: #aaa;
+      min-height: 50px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 13px;
+      background: white;
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    button:hover {
+      opacity: .8;
+    }
+
+    .payment {
+      display: none;
+      width: min(600px, 92%);
+      margin: 30px auto 60px;
+      padding: 28px;
+      background: rgba(20,20,20,.97);
+      border: 1px solid #333;
+      border-radius: 20px;
+    }
+
+    .payment h2 {
+      margin-bottom: 20px;
+    }
+
+    .selected {
+      color: #bbb;
+      margin-bottom: 15px;
+    }
+
+    .card-number {
+      direction: ltr;
+      text-align: center;
+      font-size: 22px;
+      letter-spacing: 2px;
+      background: #090909;
+      padding: 17px;
+      border-radius: 12px;
+      margin: 15px 0;
+      border: 1px solid #333;
+    }
+
+    .warning {
+      color: #aaa;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .result {
+      display: none;
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .code {
+      direction: ltr;
+      background: #050505;
+      border: 1px dashed #555;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 12px 0;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      user-select: all;
+    }
+
+    .guide {
+      display: none;
+      margin-top: 15px;
+      background: #101010;
+      border-radius: 12px;
+      padding: 18px;
+      color: #ccc;
+      line-height: 2;
+      font-size: 14px;
+    }
+
+    @media(max-width: 800px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎲 تاسینو</h1>
+  <p>فروش کدهای چیت تاسینو</p>
+</header>
+
+<section class="cards">
+
+  <div class="card">
+    <h2>چیت عادی</h2>
+    <div class="desc">
+      مناسب استفاده معمولی<br>
+      تا ۵ بازی
+    </div>
+    <div class="price">۵۰,۰۰۰ تومان</div>
+    <button onclick="buy('چیت عادی',50000)">
+      خرید
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>چیت خوب</h2>
+    <div class="desc">
+      نسخه بهتر و قدرتمندتر<br>
+      تا ۱۰ بازی
+    </div>
+    <div class="price">۷۰,۰۰۰ تومان</div>
+    <button onclick="buy('چیت خوب',70000)">
+      خرید
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>چیت پرو</h2>
+    <div class="desc">
+      نسخه حرفه‌ای<br>
+      تا ۳۵ بازی
+    </div>
+    <div class="price">۹۸,۰۰۰ تومان</div>
+    <button onclick="buy('چیت پرو',98000)">
+      خرید
+    </button>
+  </div>
+
+</section>
+
+<section class="payment" id="payment">
+
+  <h2>پرداخت</h2>
+
+  <div class="selected" id="selected"></div>
+
+  <p>مبلغ را به شماره کارت زیر واریز کنید:</p>
+
+  <div class="card-number">
+    5022 2915 2287 1217
+  </div>
+
+  <div class="warning">
+    پس از انجام پرداخت، روی دکمه «پرداخت کردم» بزنید.
+    توجه کنید این صفحه توانایی برسی تراکنش بانکی را دارد! 
+  </div>
+
+  <button onclick="paid()">
+    پرداخت کردم
+  </button>
+
+  <div class="result" id="result">
+
+    <p>کد شما:</p>
+
+    <div class="code" id="code"></div>
+
+    <p style="color:#aaa; font-size:13px;">
+      اگر مبلغ را پرداخت کرده باشید، کد چیت قابل استفاده است.
+    </p>
+
+    <br>
+
+    <button onclick="showGuide()">
+      راهنما
+    </button>
+
+    <div class="guide" id="guide">
+      قبل از ران هر بازی، این کد را داخل گپ بفرست
+      تا تاس بالای ۴ بدهد.
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+
+  let selectedPrice = 0;
+
+  function buy(name, price) {
+    selectedPrice = price;
+
+    document.getElementById("selected").innerText =
+      name + " — " + price.toLocaleString("fa-IR") + " تومان";
+
+    document.getElementById("payment").style.display = "block";
+
+    document.getElementById("payment")
+      .scrollIntoView({behavior:"smooth"});
+  }
+
+  function generateCode() {
+
+    const chars =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    let code = "";
+
+    for(let i = 0; i < 14; i++) {
+      code += chars[Math.floor(Math.random() * chars.length)];
+    }
+
+    return code;
+  }
+
+  function paid() {
+
+    document.getElementById("code").innerText =
+      generateCode();
+
+    document.getElementById("result").style.display =
+      "block";
+
+    document.getElementById("result")
+      .scrollIntoView({behavior:"smooth"});
+  }
+
+  function showGuide() {
+
+    const guide =
+      document.getElementById("guide");
+
+    guide.style.display =
+      guide.style.display === "block"
+      ? "none"
+      : "block";
+  }
+
+</script>
+
+</body>
+</html>
